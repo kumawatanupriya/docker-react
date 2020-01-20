@@ -1,7 +1,5 @@
 sudo: required
-language: node_js
-node_js: 
-  - "node"
+language: generic
 services:
   - docker
 
@@ -9,4 +7,4 @@ before_install:
   - docker build -t kumawatanupriya/frontend -f Dockerfile.dev .
 
 script:
-  - docker run kumawatanupriya/frontend npm run test -- --coverage
+  - docker run -e CI=true kumawatanupriya/docker-react npm run test
